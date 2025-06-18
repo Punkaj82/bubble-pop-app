@@ -1,5 +1,29 @@
 const container = document.getElementById('bubble-container');
-const popSound = document.getElementById('pop-sound');
+const popSounds = {
+  blue: document.getElementById('pop-blue'),
+  pink: document.getElementById('pop-pink'),
+  green: document.getElementById('pop-green'),
+  yellow: document.getElementById('pop-yellow'),
+};
+
+const bubbleTypes = [
+  {
+    color: 'blue',
+    gradient: 'radial-gradient(circle at 30% 30%, #fff 0%, #a0e7e5 70%, #0099ff 100%)',
+  },
+  {
+    color: 'pink',
+    gradient: 'radial-gradient(circle at 30% 30%, #fff 0%, #ffb6e6 70%, #ff69b4 100%)',
+  },
+  {
+    color: 'green',
+    gradient: 'radial-gradient(circle at 30% 30%, #fff 0%, #b4f8c8 70%, #00cc66 100%)',
+  },
+  {
+    color: 'yellow',
+    gradient: 'radial-gradient(circle at 30% 30%, #fff 0%, #fff6b7 70%, #ffe066 100%)',
+  },
+];
 
 function randomBetween(min, max) {
   return Math.random() * (max - min) + min;
@@ -13,7 +37,11 @@ function createBubble() {
   bubble.style.height = `${size}px`;
   bubble.style.left = `${randomBetween(0, container.offsetWidth - size)}px`;
   bubble.style.bottom = '-100px';
-  bubble.style.background = `radial-gradient(circle at 30% 30%, #fff 0%, hsl(${randomBetween(160, 300)}, 70%, 80%) 70%, hsl(${randomBetween(120, 200)}, 80%, 70%) 100%)`;
+
+  // Pick a random bubble type
+  const type = bubbleTypes[Math.floor(Math.random() * bubbleTypes.length)];
+  bubble.style.background = type.gradient;
+  bubble.dataset.color = type.color;
 
   // Animate bubble upward
   const duration = randomBetween(4000, 8000);
@@ -33,8 +61,12 @@ function createBubble() {
 
   // Pop on click/tap
   bubble.addEventListener('pointerdown', () => {
-    popSound.currentTime = 0;
-    popSound.play();
+    const color = bubble.dataset.color;
+    const sound = popSounds[color];
+    if (sound) {
+      sound.currentTime = 0;
+      sound.play();
+    }
     bubble.remove();
   });
 
