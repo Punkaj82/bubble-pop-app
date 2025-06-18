@@ -1,0 +1,38 @@
+body {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #ff69b4;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 8px #fff;
+}
+
+#bubble-container {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff 0%, #a0e7e5 70%, #b4f8c8 100%);
+  box-shadow: 0 0 20px 5px #fff8;
+  cursor: pointer;
+  transition: transform 0.1s;
+  border: 2px solid #fff;
+}
+
+.bubble:active {
+  transform: scale(1.1);
+} 
