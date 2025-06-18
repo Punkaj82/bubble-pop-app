@@ -1,0 +1,16 @@
+{
+  "name": "Kid Mode",
+  "short_name": "Kid Mode",
+  "description": "A fun bubble popping app for kids!",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#a8edea",
+  "theme_color": "#ff69b4",
+  "icons": [
+    {
+      "src": "kidmode-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 
